@@ -4,14 +4,14 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 
 def pytest_addoption(parser):
-    parser.addoption('--language_name', action='store', default= 'ru',
+    parser.addoption('--language', action='store', default= 'ru',
                      help="Dedault browser: ru. You can chooseru or es")
 
 @pytest.fixture(scope="class") 
 def browser(request):
     print("\nstart browser for test..")
     options = Options()
-    language_name = request.config.getoption("language_name")
+    language_name = request.config.getoption("language")
 
     prefs = {'intl.accept_languages': language_name
     }
